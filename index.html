@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dash Bootstrap Components: Margin & Padding Guide</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    margin:0;
+    background:#f4f6f9;
+    padding:30px;
+    color:#222;
+}
+
+h1{
+    margin-top:0;
+}
+
+h2{
+    margin-top:50px;
+    border-bottom:2px solid #ddd;
+    padding-bottom:8px;
+}
+
+h3{
+    margin-top:28px;
+}
+
+p{
+    line-height:1.6;
+}
+
+.section{
+    margin-bottom:60px;
+}
+
+.code{
+    background:#272822;
+    color:#eee;
+    padding:12px;
+    border-radius:6px;
+    font-family:Consolas,monospace;
+    white-space:pre-wrap;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ---------- Margin & Padding intro ---------- */
+
+.margin-box{
+    background:#ffcc80;
+    padding:30px;
+    margin:40px auto;
+    max-width:700px;
+    border:4px dashed #e65100;
+    position:relative;
+}
+
+.padding-box{
+    background:#90caf9;
+    border:4px solid #1565c0;
+    padding:35px;
+    position:relative;
+}
+
+.content-box{
+    background:white;
+    border:2px solid #555;
+    padding:20px;
+    text-align:center;
+}
+
+/* ---------- Container ---------- */
+
+.container-demo{
+    max-width:900px;
+    margin:auto;
+    background:#fff3e0;
+    border:3px solid #ef6c00;
+    padding:0.75rem;
+    position:relative;
+}
+
+.container-demo .inner-tag{
+    background:white;
+    border:2px dashed #999;
+    padding:10px;
+    text-align:center;
+    font-size:13px;
+    color:#666;
+}
+
+/* ---------- Row / Col gutter demo ---------- */
+
+.row-demo{
+    display:flex;
+    background:#e8f5e9;
+    border:3px dashed #2e7d32;
+    margin-left:-0.75rem;
+    margin-right:-0.75rem;
+    position:relative;
+}
+
+.col-demo{
+    flex:1;
+    padding-left:0.75rem;
+    padding-right:0.75rem;
+}
+
+.col-demo-inner{
+    background:#bbdefb;
+    border:2px solid #1565c0;
+    padding:20px;
+    text-align:center;
+    font-weight:bold;
+    height:100%;
+}
+
+.gutter-wrap{
+    max-width:900px;
+    margin:20px auto;
+    background:white;
+    border:3px solid #555;
+    padding:15px;
+}
+
+/* interactive gutter demo */
+
+.demo-controls{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:15px 0;
+    flex-wrap:wrap;
+}
+
+.demo-controls button{
+    border:2px solid #1565c0;
+    background:white;
+    color:#1565c0;
+    padding:6px 14px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.demo-controls button.active{
+    background:#1565c0;
+    color:white;
+}
+
+.gutter-row{
+    display:flex;
+    background:#e8f5e9;
+    border:3px dashed #2e7d32;
+    transition:margin .15s ease;
+}
+
+.gutter-col{
+    flex:1;
+    transition:padding .15s ease;
+}
+
+.gutter-col-inner{
+    background:#bbdefb;
+    border:2px solid #1565c0;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    font-size:13px;
+}
+
+/* ---------- Card ---------- */
+
+.card{
+    margin-top:20px;
+    background:white;
+    border:2px solid #999;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+    position:relative;
+}
+
+.card-header{
+    background:#1976d2;
+    color:white;
+    padding:0.5rem 1rem;
+    font-weight:bold;
+}
+
+.card-body{
+    padding:1rem;
+}
+
+.card-footer{
+    background:#eceff1;
+    padding:0.5rem 1rem;
+}
+
+/* box-model measurement overlay */
+
+.measure{
+    position:absolute;
+    font-size:11px;
+    font-family:Consolas,monospace;
+    background:#212121;
+    color:#fff176;
+    padding:1px 6px;
+    border-radius:3px;
+    white-space:nowrap;
+    z-index:5;
+}
+
+/* Labels */
+
+.label{
+    display:inline-block;
+    background:#222;
+    color:white;
+    padding:4px 10px;
+    border-radius:5px;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.note{
+    background:#fff3cd;
+    padding:15px;
+    border-left:5px solid orange;
+    margin-top:15px;
+    border-radius:0 6px 6px 0;
+}
+
+.gotcha{
+    background:#fde7e9;
+    padding:15px;
+    border-left:5px solid #c62828;
+    margin-top:15px;
+    border-radius:0 6px 6px 0;
+}
+
+.legend{
+    display:grid;
+    grid-template-columns:180px auto;
+    gap:10px;
+    margin-top:20px;
+}
+
+.color{
+    height:25px;
+}
+
+.orange{background:#ffcc80;}
+.blue{background:#90caf9;}
+.green{background:#e8f5e9;}
+.white{background:white;border:1px solid #999;}
+
+table.spec{
+    border-collapse:collapse;
+    width:100%;
+    margin-top:15px;
+    font-size:14px;
+}
+
+table.spec th, table.spec td{
+    border:1px solid #ccc;
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+}
+
+table.spec th{
+    background:#37474f;
+    color:white;
+}
+
+table.spec tr:nth-child(even){
+    background:#f7f7f7;
+}
+
+table.spec code{
+    background:#eee;
+    padding:2px 5px;
+    border-radius:4px;
+    font-size:13px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Dash Bootstrap Components: Margin &amp; Padding Guide</h1>
+
+<p>
+A reference for how spacing actually works in <b>Dash Bootstrap Components (DBC)</b>,
+since it's built on Bootstrap 5's CSS underneath. The tricky part isn't margin
+vs. padding in the abstract, it's that <code>Container</code>, <code>Row</code>,
+<code>Col</code>, and <code>Card</code> each ship with their <i>own</i> default
+spacing baked in, and they're designed to cancel each other out in specific ways.
+</p>
+
+<div class="legend">
+<div class="color orange"></div><div>Margin (space outside)</div>
+<div class="color blue"></div><div>Padding (space inside)</div>
+<div class="color green"></div><div>Row</div>
+<div class="color white"></div><div>Card / content</div>
+</div>
+
+<!-- Margin vs Padding -->
+
+<div class="section">
+
+<h2>1. Margin vs Padding, quickly</h2>
+
+<div class="margin-box">
+<div class="measure" style="top:2px;left:2px;">margin: 40px</div>
+<div class="label">Margin (orange)</div>
+
+<div class="padding-box">
+<div class="measure" style="top:2px;left:2px;">padding: 35px</div>
+<div class="label">Padding (blue)</div>
+
+<div class="content-box">
+Content
+</div>
+
+</div>
+</div>
+
+<p>
+<b>Margin</b> pushes other elements away from the <i>outside</i> of a box.
+<b>Padding</b> pushes the content away from the box's own border, on the <i>inside</i>.
+Same visual effect (whitespace), completely different mechanism, which matters
+once boxes start colliding with each other.
+</p>
+
+<div class="code">
+dbc.Card(
+    dbc.CardBody("Content"),
+    className="m-4 p-3"
+)
+
+m-4 = margin (outside the card)
+p-3 = padding (would add padding to the Card div itself,
+       on top of whatever CardBody already adds inside)
+</div>
+
+</div>
+
+<!-- Container -->
+
+<div class="section">
+
+<h2>2. Container</h2>
+
+<div class="container-demo">
+<div class="measure" style="top:2px;right:2px;">padding: ~0.75rem L/R</div>
+<div class="inner-tag">Container content sits here</div>
+</div>
+
+<p>
+<code>dbc.Container</code> renders a <code>&lt;div class="container"&gt;</code>.
+By default Bootstrap gives it:
+</p>
+
+<ul>
+<li><b>Horizontal padding</b> (~0.75rem / 12px on each side) so content never touches the browser edge</li>
+<li><b>Auto left/right margin</b> so it self-centers</li>
+<li><b>A max-width that changes per breakpoint</b> instead of always filling 100% width</li>
+</ul>
+
+<p>
+Pass <code>fluid=True</code> (<code>dbc.Container(fluid=True)</code>) and it becomes
+full-width at every breakpoint, with no max-width, and still keeps its side padding.
+</p>
+
+<div class="code">
+dbc.Container([...])            # centered, capped width per breakpoint
+dbc.Container([...], fluid=True) # full width, same side padding
+</div>
+
+</div>
+
+<!-- Row & Col gutters -->
+
+<div class="section">
+
+<h2>3. Row &amp; Col: the gutter trick</h2>
+
+<p>
+This is the part that trips people up most. <code>dbc.Row</code> and
+<code>dbc.Col</code> don't just have plain padding; they're built as a pair
+that cancels itself out:
+</p>
+
+<ul>
+<li><code>Row</code> gets a <b>negative left/right margin</b> (pulls it slightly wider than its parent)</li>
+<li>Every <code>Col</code> inside gets <b>matching positive padding</b> on left/right</li>
+</ul>
+
+<p>
+The negative row margin and the positive column padding are the same size, so
+they cancel at the outer edges (flush with the Container) while creating a
+visible gutter <i>between</i> columns, where two columns' padding sits back to back.
+</p>
+
+<div class="gutter-wrap">
+<div class="row-demo">
+<div class="measure" style="top:-24px;left:2px;">margin-left/right: -0.75rem</div>
+<div class="col-demo">
+<div class="measure" style="top:-24px;left:2px;">padding-left/right: 0.75rem</div>
+<div class="col-demo-inner">Col 1</div>
+</div>
+<div class="col-demo">
+<div class="col-demo-inner">Col 2</div>
+</div>
+<div class="col-demo">
+<div class="col-demo-inner">Col 3</div>
+</div>
+</div>
+</div>
+
+<div class="note">
+This is why a bare <code>dbc.Row(...)</code> placed <i>outside</i> a
+<code>dbc.Container</code> can cause a horizontal scrollbar, since the row's negative
+margin pokes past the edge of the viewport with nothing to cancel it out.
+Always nest Rows inside a Container (or another element with matching padding).
+</div>
+
+<h3>Try it: adjust the gutter</h3>
+
+<div class="demo-controls" id="gutterButtons">
+<button data-g="0">g-0 (no gutter)</button>
+<button data-g="1">g-1</button>
+<button data-g="3" class="active">g-3 (default)</button>
+<button data-g="5">g-5 (max)</button>
+</div>
+
+<div class="gutter-wrap">
+<div class="gutter-row" id="gutterRow">
+<div class="gutter-col" id="gc1"><div class="gutter-col-inner">Col 1</div></div>
+<div class="gutter-col" id="gc2"><div class="gutter-col-inner">Col 2</div></div>
+<div class="gutter-col" id="gc3"><div class="gutter-col-inner">Col 3</div></div>
+</div>
+</div>
+
+<div class="code">
+dbc.Row([
+    dbc.Col(...),
+    dbc.Col(...),
+    dbc.Col(...)
+], className="g-0")   # g-0, g-1, g-2, g-3 (default), g-4, g-5
+</div>
+
+</div>
+
+<!-- Card -->
+
+<div class="section">
+
+<h2>4. Card, CardHeader, CardBody, CardFooter</h2>
+
+<div class="card">
+<div class="card-header">
+<div class="measure" style="top:2px;right:2px;color:#fff9c4;background:#0d47a1;">padding: 0.5rem 1rem</div>
+Card Header
+</div>
+
+<div class="card-body">
+<div class="measure" style="top:2px;right:2px;">padding: 1rem</div>
+This is the card body. Notice the padding around the text.
+</div>
+
+<div class="card-footer">
+Card Footer
+</div>
+
+</div>
+
+<p>
+Unlike Row/Col, <code>Card</code> itself has <b>no default margin</b>; it just
+sits where it's placed. All the default spacing lives on the pieces
+<i>inside</i> it:
+</p>
+
+<ul>
+<li><code>dbc.Card</code>: border, rounded corners, no default padding of its own</li>
+<li><code>dbc.CardHeader</code>: modest padding (~0.5rem top/bottom, 1rem left/right)</li>
+<li><code>dbc.CardBody</code>: the roomiest default padding (~1rem all around)</li>
+<li><code>dbc.CardFooter</code>: same padding scale as the header</li>
+</ul>
+
+<div class="gotcha">
+Adding <code>className="p-3"</code> to <code>dbc.Card</code> directly (instead of
+to <code>CardBody</code>) pads the outside wrapper, not the content next to the
+border, and it usually looks wrong because the header/footer already have their
+own padding baked in. Put spacing utility classes on the inner component
+(<code>CardBody</code>, <code>CardHeader</code>) unless you specifically want
+space between the card's border and everything inside it.
+</div>
+
+<div class="code">
+dbc.Card([
+    dbc.CardHeader("Header"),
+    dbc.CardBody("Body", className="p-4"),  # extra padding, scoped to the body
+    dbc.CardFooter("Footer")
+], className="mt-3")  # margin, scoped to the whole card
+</div>
+
+</div>
+
+<!-- Cheat sheet table -->
+
+<div class="section">
+
+<h2>5. Default spacing by component (at a glance)</h2>
+
+<table class="spec">
+<tr><th>Component</th><th>Default margin</th><th>Default padding</th><th>Where to add spacing utilities</th></tr>
+<tr><td><code>Container</code></td><td>auto (centers it)</td><td>~0.75rem left/right</td><td>on the Container itself is fine</td></tr>
+<tr><td><code>Row</code></td><td>negative left/right (gutter offset)</td><td>none</td><td>use <code>g-*</code> for gutter size, not <code>m-*</code></td></tr>
+<tr><td><code>Col</code></td><td>none</td><td>~0.75rem left/right (half the gutter)</td><td>rarely, usually leave it alone</td></tr>
+<tr><td><code>Card</code></td><td>none</td><td>none</td><td>margin here for spacing between cards</td></tr>
+<tr><td><code>CardHeader</code> / <code>CardFooter</code></td><td>none</td><td>~0.5rem / 1rem</td><td>padding overrides here if needed</td></tr>
+<tr><td><code>CardBody</code></td><td>none</td><td>~1rem all sides</td><td>padding overrides usually go here</td></tr>
+</table>
+
+<p style="font-size:13px;color:#666;">
+Exact rem values can shift slightly between Bootstrap/DBC versions and themes,
+treat these as "roughly this much," and check DevTools on your running app for
+the precise number if it matters pixel-for-pixel.
+</p>
+
+</div>
+
+<!-- Complete Example -->
+
+<div class="section">
+
+<h2>6. Putting it together</h2>
+
+<div class="container-demo">
+<div class="row-demo" style="background:#e8f5e9;">
+<div class="col-demo">
+<div class="card">
+<div class="card-header">Sales</div>
+<div class="card-body">$15,400</div>
+</div>
+</div>
+<div class="col-demo">
+<div class="card">
+<div class="card-header">Customers</div>
+<div class="card-body">248</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="code">
+dbc.Container([
+    dbc.Row([
+        dbc.Col(
+            dbc.Card([
+                dbc.CardHeader("Sales"),
+                dbc.CardBody("$15,400")
+            ])
+        ),
+        dbc.Col(
+            dbc.Card([
+                dbc.CardHeader("Customers"),
+                dbc.CardBody("248")
+            ])
+        )
+    ], className="g-3")   # gutter between the two cards
+], fluid=False)
+</div>
+
+<p>
+Notice nothing here needed a manual <code>m-*</code> or <code>p-*</code> class;
+Container's padding, Row's negative margin, Col's padding, and CardBody's padding
+all do their job automatically. Utility classes are for the exceptions, not the baseline.
+</p>
+
+</div>
+
+<!-- Gotchas -->
+
+<div class="section">
+
+<h2>7. Common gotchas</h2>
+
+<div class="gotcha">
+<b>Unexpected horizontal scrollbar.</b> Almost always a <code>Row</code> sitting
+outside a <code>Container</code>, or nested directly in <code>&lt;body&gt;</code>/
+<code>dash.Dash().layout</code> with no wrapping Container to cancel its negative margin.
+</div>
+
+<div class="gotcha">
+<b>"My padding did nothing."</b> Usually a specificity fight: Bootstrap's own
+<code>.card-body</code> or <code>.col</code> rule is more specific than a plain
+custom class, or the utility class got applied to the wrong element (Card vs. CardBody).
+</div>
+
+<div class="gotcha">
+<b>Double gutters.</b> Nesting a <code>Row</code> directly inside a <code>Col</code>
+without an intermediate wrapper stacks two negative-margin/padding pairs. Usually fine
+visually, but worth knowing if spacing looks slightly larger than expected in nested grids.
+</div>
+
+</div>
+
+<!-- Bootstrap spacing -->
+
+<div class="section">
+
+<h2>8. Bootstrap spacing utility cheat sheet</h2>
+
+<div class="code">
+m = margin          p = padding
+mt = margin-top      pt = padding-top
+mb = margin-bottom   pb = padding-bottom
+ms = margin-left     ps = padding-left
+me = margin-right    pe = padding-right
+mx = left &amp; right   px = left &amp; right
+my = top &amp; bottom   py = top &amp; bottom
+
+g  = row/col gutter (g-0 through g-5)
+gx = horizontal gutter only
+gy = vertical gutter only
+
+Scale: 0, 1, 2, 3, 4, 5, auto  (0 = none, 5 = largest, auto = margin-only)
+
+Examples
+m-3        mt-4        mb-5
+mx-auto    p-2         px-4
+py-5       g-0         gy-2
+</div>
+
+</div>
+
+<script>
+// Interactive gutter demo, approximates Bootstrap's g-0..g-5 scale in px
+(function(){
+    var scale = {0:0, 1:4, 2:8, 3:12, 4:24, 5:48}; // half-gutter px per side, roughly matching Bootstrap rem scale
+    var row = document.getElementById('gutterRow');
+    var cols = [document.getElementById('gc1'), document.getElementById('gc2'), document.getElementById('gc3')];
+    var buttons = document.querySelectorAll('#gutterButtons button');
+
+    function apply(g){
+        var half = scale[g];
+        row.style.marginLeft = (-half) + 'px';
+        row.style.marginRight = (-half) + 'px';
+        cols.forEach(function(c){
+            c.style.paddingLeft = half + 'px';
+            c.style.paddingRight = half + 'px';
+        });
+        buttons.forEach(function(b){
+            b.classList.toggle('active', b.getAttribute('data-g') === String(g));
+        });
+    }
+
+    buttons.forEach(function(b){
+        b.addEventListener('click', function(){
+            apply(parseInt(b.getAttribute('data-g'), 10));
+        });
+    });
+
+    apply(3); // default state, matches g-3
+})();
+</script>
+
+</body>
+</html>
